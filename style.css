@@ -11,6 +11,7 @@ body {
 
 nav {
   display: flex;
+  flex-wrap: wrap;      /* Allow wrapping on narrow screens */
   padding: 10px;
   align-items: center;
   gap: 10px;
@@ -28,6 +29,7 @@ nav a {
   font-weight: 600;
   padding: 10px 15px;
   border-radius: 20px;
+  white-space: nowrap; /* Prevent links from breaking lines */
 }
 
 nav a.active {
@@ -40,6 +42,49 @@ nav a img {
   width: 30px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+/* New styles for search input and button */
+nav input.search {
+  flex: 1 1 250px;   /* Grow and shrink, base width 250px */
+  min-width: 180px;
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+}
+
+nav button#searchButton {
+  padding: 8px 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 20px;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  nav input.search,
+  nav button#searchButton {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  nav a,
+  nav a.active,
+  nav a img {
+    padding: 8px 0;
+    text-align: center;
+  }
 }
 
 .logo {
