@@ -3,28 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login - Pinterest animals</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <title>Login - Pinterest Animals</title>
+  <link rel="stylesheet" href="../../style.css" />
   <link rel="stylesheet" href="login.css" />
 </head>
 <body>
-
   <nav>
-    <a class="logo" href="index.html">Z</a>
+    <a class="logo" href="../../index.html">Z</a>
   </nav>
-
   <div class="login-container">
     <div class="logo">Z</div>
     <h2>Log in to Pinterest Cats</h2>
     <form id="loginForm">
-      <input type="email" placeholder="Email" id="email" required />
+      <input type="email" placeholder="Username" id="email" required />
       <input type="password" placeholder="Password" id="password" required />
       <button type="submit">Log In</button>
     </form>
     <div class="signup">
-      Don’t have an account? <a href="#">Sign up</a>
+      Don’t have an account? <a href="../signup/signup.html">Sign up</a>
     </div>
-
     <div class="social-login">
       <button class="social-btn google">
         <i class="fab fa-google"></i> Login with Google
@@ -33,8 +30,10 @@
         <i class="fab fa-instagram"></i> Login with Instagram
       </button>
     </div>
-  </div>
+    <div id="signupFormContainer" style="display:none; margin-top: 20px;">
+  
 
-  <script src="auth.js"></script>
+  </div>
+  <script src="../../js/auth.js"></script>
 </body>
 </html>

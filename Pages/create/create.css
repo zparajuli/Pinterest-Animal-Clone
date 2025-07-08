@@ -1,0 +1,139 @@
+/* pages/create/create.css */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(to right, #fefefe, #f7f7f7);
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+.upload-container {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  max-width: 600px;
+  width: 100%;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 24px;
+  color: #222;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+}
+
+label span {
+  color: red;
+}
+
+input[type="text"],
+input[type="file"] {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #fafafa;
+  font-size: 15px;
+  transition: all 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="file"]:focus {
+  border-color: #ff4b4b;
+  outline: none;
+  background-color: #fff;
+}
+
+small {
+  color: #777;
+  display: block;
+  margin-top: 4px;
+  font-size: 13px;
+}
+
+.submit-btn {
+  background-color: #e60023;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 20px;
+  font-size: 16px;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #c3001b;
+}
+
+.status {
+  margin-top: 16px;
+  font-weight: 600;
+  text-align: center;
+  color: #2e7d32;
+}
+
+
+nav {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+nav a.logo {
+  font-size: 30px;
+  color: #E60023;
+  text-decoration: none;
+}
+
+select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #fafafa;
+  font-size: 15px;
+  transition: all 0.2s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg width='10' height='5' viewBox='0 0 10 5' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0l5 5 5-5z' fill='%23999'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 10px 5px;
+}
+
+select:focus {
+  border-color: #ff4b4b;
+  outline: none;
+  background-color: #fff;
+}

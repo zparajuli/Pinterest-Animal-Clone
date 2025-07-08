@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Upload Animal Image</title>
+  <link rel="stylesheet" href="create.css" />
+</head>
+<body>
+
+  <nav>
+    <a class="logo" href="../../index.html">Z</a>
+  </nav>
+
+  <!-- Upload Form Container -->
+  <div class="upload-container">
+    <h1>Upload Your Animal Image</h1>
+    <form id="uploadForm">
+      
+      <!-- Title -->
+      <div class="form-group">
+        <label for="title">Image Title <span>*</span></label>
+        <input type="text" id="title" placeholder="e.g., Happy Labrador" required />
+      </div>
+
+      <!-- Animal Type Dropdown -->
+      <div class="form-group">
+        <label for="type">Animal Type <span>*</span></label>
+        <select id="type" required>
+          <option value="" disabled selected>Select type</option>
+          <option value="dog">Dog</option>
+          <option value="cat">Cat</option>
+          <option value="fox">Fox</option>
+        </select>
+        <small>Used to filter and search images by type</small>
+      </div>
+
+      <!-- Tags -->
+      <div class="form-group">
+        <label for="tags">Tags / Keywords</label>
+        <input type="text" id="tags" placeholder="e.g., fluffy, cute, happy" />
+        <small>Helps others search for your image</small>
+      </div>
+
+      <!-- File Input -->
+      <div class="form-group">
+        <label for="file">Choose an Image <span>*</span></label>
+        <input type="file" id="file" accept="image/*" required />
+      </div>
+
+      <!-- Preview -->
+      <div id="preview-container" class="form-group">
+        <label>Preview:</label>
+        <img id="preview" style="max-width: 100%; border-radius: 10px; display: none;" />
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="submit-btn">Upload Image</button>
+      <div id="uploadStatus" class="status"></div>
+    </form>
+  </div>
+
+  <!-- JS -->
+  <script src="upload.js"></script>
+</body>
+</html>

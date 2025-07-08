@@ -2,83 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pinterest Animal Clones</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
-  <title>Pinterest Animal Clones</title>
 </head>
 <body>
+
 <nav>
   <a class="logo" href="#">Z</a>
-  <a href="#" class="active">Home</a>
+  <a href="index.html" class="active">Home</a>
   <a href="#">Explore</a>
-  <a href="#">Create</a>
-  <input type="text" class="search" placeholder="Search" />
+  <a href="Pages/create/create.html">Create</a>
+
+  <input type="text" id="searchInput" class="search" placeholder="e.g. cute + black + dog + amy" />
+  <button id="searchButton">Search</button>
+
   <a href="#" class="icon"><i class="fas fa-bell"></i></a>
   <a href="#" class="icon"><i class="fas fa-comment-dots"></i></a>
-  <a href="login.html">
+  <a href="pages/login/login.html">
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyIGN4Z5LDVT7hl8sk76cZ4FU1mdkB5LIm7g&s" alt="Profile" />
   </a>
 </nav>
 
-</nav>
+<div id="loader" style="display:none;">Loading...</div>
 
-  <div id="loader" style="display:none;">Loading...</div>
-  <div id="container">
-    <div class="col"></div>
-    <div class="col"></div>
-    <div class="col"></div>
-    <div class="col"></div>
-    <div class="col"></div>
+<div id="container">
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+</div>
+
+<div id="imagePopup" class="popup hidden">
+  <div class="popup-content">
+    <img src="" alt="Popup Image" />
+    <button id="popupDownloadBtn" aria-label="Download Image">
+      <i class="fas fa-download"></i>
+    </button>
   </div>
-  
-  <div id="imagePopup" class="popup hidden">
-  <img src="" alt="Popup Image" />
-</div>
-
-<div id="credit-banner" style="
-  display: none;
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  background-color: #f9f9f9;
-  border-bottom: 1px solid #ddd;
-  padding: 12px 20px;
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: 14px;
-  color: #333;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  z-index: 2000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-">
-  <span>This project uses Pinterest branding and open APIs. Thank you!</span>
-  <button id="credit-ok" style="
-    background-color: #e60023;
-    border: none;
-    color: white;
-    padding: 6px 14px;
-    border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  ">Okay</button>
-  <button id="credit-cancel" style="
-    background-color: transparent;
-    border: 1px solid #e60023;
-    color: #e60023;
-    padding: 6px 14px;
-    border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s ease, color 0.2s ease;
-  ">Cancel</button>
 </div>
 
 
-  <script src="auth.js"></script>
-  <script src="script.js"></script>
+<!-- Credit banner -->
+<div id="credit-banner">
+  <div class="modal-content">
+    <span>This project uses Pinterest branding and open APIs. Thank you!</span>
+    <button id="credit-ok">Okay</button>
+    <button id="credit-cancel">Cancel</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
-

@@ -49,7 +49,6 @@ nav a img {
   text-decoration: none;
 }
 
-
 input {
   width: 70%;
   padding: 15px;
@@ -75,6 +74,7 @@ a.icon:hover {
   margin-top: 100px;
   padding: 0 10px;
 }
+
 .card {
   break-inside: avoid;
   margin-bottom: 10px;
@@ -91,21 +91,34 @@ a.icon:hover {
   transition: transform 0.3s ease;
 }
 
-.card img.enlarged {
-  position: fixed;          
-  top: 50%;                
-  left: 50%;               
-  transform: translate(-50%, -50%); 
-  z-index: 1000;           
-  cursor: zoom-out;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
-  transition: width 0.3s ease, height 0.3s ease;
-
-  max-width: 80vw;
-  max-height: 80vh;       
+.card:hover {
+  transform: scale(1.02);
 }
 
+.card div {
+  padding: 8px;
+}
+
+.card div strong {
+  display: block;
+}
+
+#searchButton {
+  margin-left: 10px;
+  background-color: #e60023;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+#searchButton:hover {
+  background-color: #cc001f;
+}
 
 #loader {
   border: 4px solid #f3f3f3;
@@ -116,7 +129,6 @@ a.icon:hover {
   animation: spin 1s linear infinite;
   margin: 20px auto;
 }
-
 
 @media (max-width: 1200px) {
   #container {
@@ -138,29 +150,125 @@ a.icon:hover {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0,0,0,0.5); /* dark overlay */
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 2000;
-  padding: 20px;
+  z-index: 9999;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.popup img {
-  max-width: 90%;
-  max-height: 90%;
-  width: auto;
-  height: auto;
-  transform: scale(1.5); /* you can adjust this */
-  border-radius: 12px;
-  box-shadow: 0 0 25px rgba(0,0,0,0.3);
-  cursor: zoom-out;
-}
-
-.hidden {
+.popup.hidden {
   display: none;
 }
 
+.popup img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border: 6px solid black;  /* black frame */
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.8);
+  cursor: zoom-out;
+  position: relative;
+}
+/* Popup image frame (darker) */
+.popup-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: 8px solid #222;  /* Darker border */
+  border-radius: 16px;  /* Softer corners */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);  /* Soft shadow effect */
+}
 
+/* Download button styling */
+#popupDownloadBtn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: #222;  /* Same dark color as the image frame */
+  border: none;
+  border-radius: 25px;  /* Rounded edges for a cute effect */
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 18px;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);  /* Soft shadow */
+}
+
+#popupDownloadBtn:hover {
+  background-color: #1a1a1a;  /* Slightly darker on hover */
+  transform: translateY(-3px);  /* Slight lift effect */
+}
+
+#popupDownloadBtn i {
+  margin-right: 8px;  /* Space between the icon and text */
+  font-size: 20px;
+}
+
+#popupDownloadBtn:active {
+  transform: translateY(1px);  /* Button sinks slightly when clicked */
+}
+
+
+#popupDownloadBtn img {
+  max-width: 70%;
+  max-height: 70%;
+  display: block;
+  pointer-events: none; /* so clicks go to button */
+}
+
+
+#credit-banner {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #ddd;
+  padding: 12px 20px;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  color: #333;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 9999;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+#credit-banner button {
+  background-color: #e60023;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#credit-banner button:hover {
+  background-color: #b4001a;
+}
+
+#credit-banner button:focus {
+  outline: 2px solid #e60023;
+  outline-offset: 2px;
+}
+
+#credit-banner button + button {
+  margin-left: 10px;
+}
