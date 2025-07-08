@@ -291,6 +291,15 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.paddingTop = navHeight + 'px';
   }
 
+const menuToggle = document.getElementById('menu-toggle');
+const navLinks = document.getElementById('nav-links');
+
+menuToggle.addEventListener('click', () => {
+  const expanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
+  menuToggle.setAttribute('aria-expanded', !expanded);
+  navLinks.classList.toggle('show');
+});
+
   window.addEventListener('resize', adjustBodyPadding);
   window.addEventListener('load', adjustBodyPadding);
 
@@ -340,6 +349,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   loadImages();
 });
+
+
 
 popup.addEventListener('click', (e) => {
   if (e.target === popup) {

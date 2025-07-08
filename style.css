@@ -297,23 +297,26 @@ input::placeholder {
 /* Navbar adjustments for mobile */
 @media (max-width: 600px) {
   body {
-    padding-top: 180px; /* taller nav */
+    padding-top: 60px; /* keep default nav height */
   }
 
   nav {
-    flex-direction: column;
-    align-items: stretch;
+    flex-direction: row;       /* Keep horizontal */
+    flex-wrap: nowrap;
+    align-items: center;
     gap: 8px;
-    height: auto;
-    padding: 15px 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    height: 60px;
+    padding: 10px 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   nav a {
-    padding: 12px 20px;
-    border-radius: 12px;
-    font-size: 16px;
-    white-space: normal;
+    padding: 10px 12px;
+    border-radius: 15px;
+    font-size: 14px;
+    white-space: nowrap;
     justify-content: center;
   }
 
@@ -324,19 +327,57 @@ input::placeholder {
   }
 
   input {
-    width: 100%;
-    margin-top: 8px;
-    padding: 12px 20px;
-    font-size: 16px;
-    border-radius: 15px;
+    flex: 1 1 auto;
+    min-width: 80px;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 20px;
+    margin: 0;
   }
 
+  /* Search button becomes a small round icon */
   #searchButton {
-    width: 100%;
-    margin-left: 0;
-    margin-top: 10px;
-    border-radius: 15px;
-    font-size: 18px;
-    padding: 14px 0;
+    width: 40px;
+    padding: 8px;
+    margin-left: 6px;
+    border-radius: 50%;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e60023;
+  }
+
+  /* Hide text inside the search button */
+  #searchButton::before {
+    content: '';
+  }
+
+  /* Ensure the icon inside the search button is visible */
+  #searchButton i {
+    display: block;
+    color: white;
+  }
+}
+
+/* Hide icon by default, show text */
+.create-link .create-icon {
+  display: none;
+}
+
+.create-link .create-text {
+  display: inline;
+}
+
+/* On mobile: show icon, hide text */
+@media (max-width: 600px) {
+  .create-link .create-text {
+    display: none;
+  }
+
+  .create-link .create-icon {
+    display: inline;
+    font-size: 22px;
+    font-weight: bold;
   }
 }
