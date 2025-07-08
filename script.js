@@ -280,6 +280,25 @@ window.addEventListener('scroll', () => {
 });
 
 
+document.addEventListener('DOMContentLoaded', () => {
+  // ... existing code ...
+
+  // Adjust body padding based on nav height so navbar doesn't cover content
+  function adjustBodyPadding() {
+    const nav = document.querySelector('nav');
+    if (!nav) return;
+    const navHeight = nav.offsetHeight;
+    document.body.style.paddingTop = navHeight + 'px';
+  }
+
+  window.addEventListener('resize', adjustBodyPadding);
+  window.addEventListener('load', adjustBodyPadding);
+
+  // Run once on DOM ready
+  adjustBodyPadding();
+
+  loadImages();
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   const banner = document.getElementById('credit-banner');
