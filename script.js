@@ -152,22 +152,39 @@ const clearImages = () => {
   cols.forEach(col => col.innerHTML = '');
 };
 
-const loadImages = async () => {
+let loadedCount = 0;
+const batchSize = 20;
+
+const loadImages = async (append = false) => {
   if (fetching) return;
   fetching = true;
   loader.style.display = 'block';
-  clearImages();
+
+  if (!append) {
+    loadedCount = 0; // reset on initial load
+    clearImages();
+  }
 
   try {
+    // Fetch user posts once or all? (depends on how you want pagination)
     const userPosts = fetchUserPosts();
-    userPosts.forEach((post, index) => {
-      createCard(post.image, cols[index % cols.length], post);
+
+    // Select next batch of user posts to show
+    const nextUserPosts = userPosts.slice(loadedCount, loadedCount + batchSize);
+    nextUserPosts.forEach((post, index) => {
+      createCard(post.image, cols[(loadedCount + index) % cols.length], post);
     });
 
-    const fetchedImages = await fetchMixedImages();
-    fetchedImages.forEach((img, index) => {
-      createCard(img, cols[(index + userPosts.length) % cols.length]);
-    });
+    // Fetch next batch of API images if needed
+    const needed = batchSize - nextUserPosts.length;
+    if (needed > 0) {
+      const fetchedImages = await fetchMixedImages(needed);
+      fetchedImages.forEach((img, i) => {
+        createCard(img, cols[(loadedCount + nextUserPosts.length + i) % cols.length]);
+      });
+    }
+
+    loadedCount += batchSize;
   } catch (e) {
     console.error("Error loading images:", e);
   } finally {
@@ -175,6 +192,7 @@ const loadImages = async () => {
     loader.style.display = 'none';
   }
 };
+
 
 const handleSearch = async (manualQuery = null) => {
   const query = (manualQuery || document.getElementById('searchInput').value.trim().toLowerCase());
@@ -253,9 +271,10 @@ window.addEventListener('scroll', () => {
   const docHeight = document.documentElement.scrollHeight;
 
   if (docHeight - scrollTop - windowHeight < 800) {
-    loadImages();
+    loadImages(true); // append new batch
   }
 });
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const banner = document.getElementById('credit-banner');
