@@ -263,17 +263,22 @@ window.addEventListener('popstate', async (event) => {
   }
 });
 
+let scrollTimeout;
 window.addEventListener('scroll', () => {
   if (fetching || searchActive) return;
 
-  const scrollTop = window.scrollY;
-  const windowHeight = window.innerHeight;
-  const docHeight = document.documentElement.scrollHeight;
+  clearTimeout(scrollTimeout);
+  scrollTimeout = setTimeout(() => {
+    const scrollTop = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const docHeight = document.documentElement.scrollHeight;
 
-  if (docHeight - scrollTop - windowHeight < 800) {
-    loadImages(true); // append new batch
-  }
+    if (docHeight - scrollTop - windowHeight < 800) {
+      loadImages(true);
+    }
+  }, 200); // 200ms delay to prevent overload
 });
+
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -317,7 +322,6 @@ document.addEventListener('DOMContentLoaded', () => {
   loadImages();
 });
 
-// Close popup when clicking outside the image or download button
 popup.addEventListener('click', (e) => {
   if (e.target === popup) {
     popup.classList.add('hidden');
